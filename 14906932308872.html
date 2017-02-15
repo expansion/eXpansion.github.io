@@ -1,0 +1,501 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+  
+  【转载】Linux 系统实时监控的瑞士军刀 —— Glances - 迷雾
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="迷雾" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site:expansion.github.io ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?62d755c6cb390866d7265db98f201165";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  </head>
+  <body class="antialiased hide-extras">
+
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; 迷雾</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+
+       <li><a href="index.html">HOME</a></li>
+    <li><a href="archives.html">Archives</a></li>
+    <li><a href="about.html">ABOUT</a></li>
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="methodology.html">方法论</a></li>
+        
+            <li><a href="bi.html">BI</a></li>
+        
+            <li><a href="hadoop.html">Hadoop</a></li>
+        
+            <li><a href="python.html">Python</a></li>
+        
+            <li><a href="%E7%AE%97%E6%B3%95%E4%B8%8E%E6%A8%A1%E5%9E%8B.html">算法与模型</a></li>
+        
+            <li><a href="reading-notes.html">读书笔记</a></li>
+        
+            <li><a href="pm.html">项目管理</a></li>
+        
+            <li><a href="tools.html">工具</a></li>
+        
+            <li><a href="other.html">其他</a></li>
+        
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>【转载】Linux 系统实时监控的瑞士军刀 —— Glances</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2017/3/28</span>
+
+          
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <p>早些时候，我们提到过有很多可以用来监视系统性能的 Linux 系统监视工具。 但我们估计，或许更多的用户会倾向与绝大多数 Linux 发行版都带的工具 （top 命令）。</p>
+
+<p>top 命令是 Linux 下的一个实时任务管理器， 同时也是用于在 GNU/Linux 发行版中寻找系统性能方面的瓶颈，并帮助我们作出正确操作的常用系统监视工具。 她有着一个极为简洁的界面，并自带少量的可以帮助我们快速了解系统性能的实用选项。</p>
+
+<p>但是，有些时候想要通过她寻找一个占用系统资源比较大的应用或进程可能会比较困难。 因为 top 命令本身并不会帮助我们高亮那些吃太多 CPU，内存，或者其他资源的程序。</p>
+
+<p>为了达到这个目标，这里我们将介绍一款超牛逼的系统监视程序 —— Glances。 她可以自动高亮利用最高系统资源的程序，并为 Linux/Unix 服务器提供尽可能多的信息。</p>
+
+<h3 id="toc_0">什么是 Glances？</h3>
+
+<p>Glances 是一个由 Python 编写，使用 psutil 库来从系统抓取信息的基于 curses 开发的跨平台命令行系统监视工具。 通过 Glances，我们可以监视 CPU，平均负载，内存，网络流量，磁盘 I/O，其他处理器 和 文件系统 空间的利用情况。</p>
+
+<p>Glances 是一个用来监视 GNU/Linux 和 FreeBSD 操作系统的 GPL 授权的自由软件。</p>
+
+<p>Glances 同时也提供了很多实用的选项。 其中我们能够在配置文件见到的一项主要的功能就是设置关键值及相应的标签 （careful[小心], warning[警告] 和 critical[严重]）， 然后她会自动帮我们用不同颜色标出系统达到某个瓶颈的信息。</p>
+
+<h3 id="toc_1">Glances 主要功能</h3>
+
+<ul>
+<li>CPU 信息 （用户的相关应用, 系统核心程序和空闲程序）</li>
+<li>总内存信息，包括了物理内存，交换空间和空闲内存等等</li>
+<li>之前的 1 分钟、5 分钟和 15 分钟平均的 CPU 负载</li>
+<li>网络链接的下行和上行速度</li>
+<li>处理器总数，以及其活动状态</li>
+<li>硬盘 I/O 相关（读写）速度详情</li>
+<li>当前挂载设备的磁盘使用情况</li>
+<li>高 CPU 和内存使用的进程名，和相关应用的位置</li>
+<li>在底部显示当前日期和时间</li>
+<li>将消耗最高系统资源的进程用红色标出
+下面是一个 Glances 的使用截图：
+<img src="media/14906932308872/214404gen07qvynyj3vjzn.jpeg" alt="214404gen07qvynyj3vjzn"/></li>
+</ul>
+
+<h3 id="toc_2">在 Linux/Unix 系统中安装 Glances</h3>
+
+<p>虽然这个工具的发布比较晚，但你仍然可以在 Red Hat 系的系统中通过 EPEL 软件源安装。在终端用下面的命令安装：</p>
+
+<h4 id="toc_3">对于 RHEL/CentOS/Fedora 发行版</h4>
+
+<pre><code>yum install -y glances
+</code></pre>
+
+<h4 id="toc_4">对于 Debian/Ubuntu/Linux Mint 发行版</h4>
+
+<pre><code> sudo apt-add-repository ppa:arnaud-hartmann/glances-stable
+$ sudo apt-get update
+$ sudo apt-get install glances
+</code></pre>
+
+<h3 id="toc_5">如何使用 Glances</h3>
+
+<p>首先，你需要在终端中输入以下命令</p>
+
+<pre><code>glances
+</code></pre>
+
+<p><img src="media/14906932308872/214413hgrs2ozqwarrwypo.jpeg" alt="214413hgrs2ozqwarrwypo"/></p>
+
+<p>Glances Preview – Ubuntu 13.10<br/>
+Glances Preview – Ubuntu 13.10<br/>
+按下 ‘q‘ （‘ESC‘ 和 ‘Ctrl-C‘ 也可以） 退出 <br/>
+Glances 的默认刷新频率是 1 （秒），但是你可以通过在终端指定参数来手动定义其刷新频率</p>
+
+<pre><code>glances -t 2
+</code></pre>
+
+<p>Glances 中颜色的含义<br/>
+Glances 会用一下几种颜色来代表状态：</p>
+
+<ul>
+<li>绿色：OK（一切正常）</li>
+<li>蓝色：CAREFUL（需要注意）</li>
+<li>紫色：WARNING（警告）</li>
+<li>红色：CRITICAL（严重）</li>
+<li>
+阀值可以在配置文件中设置，一般阀值被默认设置为（careful=50、warning=70、critical=90）。</li>
+</ul>
+
+<p>我们可以按照自己的需求在配置文件（默认在 /etc/glances/glances.conf）中自定义。</p>
+
+<h3 id="toc_6">Glances 的选项</h3>
+
+<p>除了很多命令行选项之外，Glances 还提供了更多的可在其运行时开关输出信息选项的快捷键，下面是一些例子：</p>
+
+<p>a – 对进程自动排序<br/>
+c – 按 CPU 百分比对进程排序<br/>
+m – 按内存百分比对进程排序<br/>
+p – 按进程名字母顺序对进程排序<br/>
+i – 按读写频率（I/O）对进程排序<br/>
+d – 显示/隐藏磁盘 I/O 统计信息<br/>
+f – 显示/隐藏文件系统统计信息<br/>
+n – 显示/隐藏网络接口统计信息<br/>
+s – 显示/隐藏传感器统计信息<br/>
+y – 显示/隐藏硬盘温度统计信息<br/>
+l – 显示/隐藏日志（log）<br/>
+b – 切换网络 I/O 单位（Bytes/bits）<br/>
+w – 删除警告日志<br/>
+x – 删除警告和严重日志<br/>
+1 – 切换全局 CPU 使用情况和每个 CPU 的使用情况<br/>
+h – 显示/隐藏这个帮助画面<br/>
+t – 以组合形式浏览网络 I/O<br/>
+u – 以累计形式浏览网络 I/O<br/>
+q – 退出（‘ESC‘ 和 ‘Ctrl&amp;C‘ 也可以）<br/>
+远程使用 Glances<br/>
+你甚至也可以通过 Glances 来监视远程系统。 要在远程系统使用 ‘glances’，需要在服务器运行 ‘glances -s’（-s 启动服务器/客户端模式）命令。</p>
+
+<pre><code>glances -s
+
+
+Define the password for the Glances server
+Password: 
+Password (confirm): 
+Glances server is running on 0.0.0.0:61209
+</code></pre>
+
+<p>注意：当你执行了‘glances’命令后，她会让你为 Glances 服务器设置密码。</p>
+
+<p>当你设置完毕，你将看到 “Glances server is running on 0.0.0.0:61209” （Glances 服务器正在 0.0.0.0 的 61209 端口运行）的消息。</p>
+
+<p>当 Glances 服务器启动后，到本地执行下面的命令来指定服务器IP地址或主机名以链接。</p>
+
+<p>注：这里的 ‘172.16.27.56’ 是我 Glances 服务器的 IP 地址。</p>
+
+<pre><code># glances -c -P 172.16.27.56
+</code></pre>
+
+<p>下面是一些在使用服务器/客户端模式时必须知道的事情：</p>
+
+<ul>
+<li>在服务器模式，你可以通过 <code>-B 地址</code> 来设置绑定地址，也可以通过 <code>-p 端口</code> 来绑定监听的 TCP 端口</li>
+<li>在客户端模式，你可以通过同样的 <code>-p 端口</code> 来指定服务器端口</li>
+<li>默认的绑定地址是 0.0.0.0，但这么做会监听所有网络接口的指定端口</li>
+<li>在服务器/客户端模式下，限制的阀值将由服务器的设置决定</li>
+<li>你也可以在命令行下用过 <code>-P 密码</code> 的方式来为服务器端设置一个密码
+### 总结
+Glances 对于大多用户而言是个在系统资源上提供过多信息的工具。但是如果你是一个想要仅从命令行就能快速获取系统整体状况的系统管理员，那这个工具绝对是你的必备利器。</li>
+</ul>
+
+<h3 id="toc_7">译者注</h3>
+
+<p>请不要将 glances（本文中的工具）和 glance（一个 OpenStack 的工具）这两个包搞混了<br/>
+Ubuntu 官方 Extra 源中的 glances 因为 python 库移动的问题导致无法正常使用 但可以通过建立软链接的方式临时修复：</p>
+
+<pre><code>sudo ln -s /usr/lib/python2.7/dist-packages/glances /usr/share/pyshared/glances
+</code></pre>
+
+<p>外链：<a href="http://www.tecmint.com/glances-an-advanced-real-time-system-monitoring-tool-for-linux/">原文</a></p>
+
+<p>外链：<a href="https://linux.cn/article-2782-1.html">中文</a></p>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="14906879678659.html" 
+          title="Next Post: grafana简介">grafana简介 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <div class="site-a-logo"><img src="asset/img/santo.jpg" /></div>
+            
+                <h1>迷雾</h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+<a target="_blank" class="github" target="_blank" href="https://github.com/expansion" title="GitHub">GitHub</a>
+<a target="_blank" class="email" href="mailto:zhongqijiang@gmail.com" title="Email">Email</a>
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="methodology.html"><strong>方法论</strong></a>
+        
+            <a href="bi.html"><strong>BI</strong></a>
+        
+            <a href="hadoop.html"><strong>Hadoop</strong></a>
+        
+            <a href="python.html"><strong>Python</strong></a>
+        
+            <a href="%E7%AE%97%E6%B3%95%E4%B8%8E%E6%A8%A1%E5%9E%8B.html"><strong>算法与模型</strong></a>
+        
+            <a href="reading-notes.html"><strong>读书笔记</strong></a>
+        
+            <a href="pm.html"><strong>项目管理</strong></a>
+        
+            <a href="tools.html"><strong>工具</strong></a>
+        
+            <a href="other.html"><strong>其他</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="14906932308872.html">【转载】Linux 系统实时监控的瑞士军刀 —— Glances</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="14906879678659.html">grafana简介</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="14906863997633.html">influxdb简介</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="14906690741306.html">linux开源监控influxdb+grafana+python</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="14905944917051.html">numpy系列（2）-解答方程</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+
+  </body>
+</html>

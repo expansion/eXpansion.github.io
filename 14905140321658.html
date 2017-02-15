@@ -1,0 +1,463 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+  
+  《可汗学院公开课：统计学》系列（1） - 迷雾
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="迷雾" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site:expansion.github.io ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?62d755c6cb390866d7265db98f201165";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  </head>
+  <body class="antialiased hide-extras">
+
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; 迷雾</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+
+       <li><a href="index.html">HOME</a></li>
+    <li><a href="archives.html">Archives</a></li>
+    <li><a href="about.html">ABOUT</a></li>
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="methodology.html">方法论</a></li>
+        
+            <li><a href="bi.html">BI</a></li>
+        
+            <li><a href="hadoop.html">Hadoop</a></li>
+        
+            <li><a href="python.html">Python</a></li>
+        
+            <li><a href="%E7%AE%97%E6%B3%95%E4%B8%8E%E6%A8%A1%E5%9E%8B.html">算法与模型</a></li>
+        
+            <li><a href="reading-notes.html">读书笔记</a></li>
+        
+            <li><a href="pm.html">项目管理</a></li>
+        
+            <li><a href="tools.html">工具</a></li>
+        
+            <li><a href="other.html">其他</a></li>
+        
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>《可汗学院公开课：统计学》系列（1）</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2017/3/26</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='reading-notes.html'>读书笔记</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <blockquote>
+<p>课程简介：<br/>
+这门课是统计学入门课程，将涵盖统计学所有的主要知识，包括：随机变量、均值方差标准差、统计图表、概率密度、二项分布、泊松分布、正态分布、大数定律、中心极限定理、样本和抽样分布、参数估计、置信区间、伯努利分布、假设检验和p值、方差分析、回归分析等内容。</p>
+
+<p>课程地址：<br/>
+外链：<a href="http://open.163.com/special/Khan/khstatistics.html">网易公开课</a></p>
+</blockquote>
+
+<hr/>
+
+<h3 id="toc_0">1. 课程内容</h3>
+
+<h6 id="toc_1">[第1集] 均值 中位数 众数</h6>
+
+<p>均值也就是算术平均值，即数据集中所有数据之和除以数据个数。<br/>
+中位数是数据集排序后，处在中间的数。<br/>
+众数是数据集中出现次数最多的数。<br/>
+补充：加权平均数<br/>
+<img src="media/14905140321658/Jietu20170327-112422@2x.jpg" alt="Jietu20170327-112422@2x"/></p>
+
+<h6 id="toc_2">[第2集] 极差 中程数</h6>
+
+<p>极差是数据集中最大数减去最小数的统计量。<br/>
+中程数是最大数和最小数的均值。</p>
+
+<h6 id="toc_3">[第3集] 象形统计图</h6>
+
+<p>象形统计图是用象形图像表示统计数据的图像，这一节讲象形统计图及例子。      </p>
+
+<h6 id="toc_4">[第4集] 条形图</h6>
+
+<p>条形图又称柱形图，是一种重要的分类汇总工具，这一节讲条形图及例子。   </p>
+
+<h6 id="toc_5">[第5集] 线形图</h6>
+
+<p>线形图，是将数据点描出来，然后连线形成的图像。用来表示趋势，这一节讲线形图及例子。 </p>
+
+<h6 id="toc_6">[第6集] 饼图</h6>
+
+<p>饼图，看起来像一块切开的饼，用于表示占比。这一节讲饼图及例子。</p>
+
+<h6 id="toc_7">[第7集] 误导人的线形图</h6>
+
+<p>当线形图画成什么样子时会产生误导了，这一讲将讲到这一问题。   </p>
+
+<h6 id="toc_8">[第8集] 茎叶图</h6>
+
+<p>茎叶图是将数组中的数按位数进行比较，分别做出茎和叶，以此统计数据。这一讲讲茎叶图及例子。<br/>
+<img src="media/14905140321658/Jietu20170327-112147@2x.jpg" alt="Jietu20170327-112147@2x"/></p>
+
+<h6 id="toc_9">[第9集] 箱线图</h6>
+
+<p>盒须图是用四个四分位点分开数据集的图，能有效给出数据散布状况。这一讲讲盒须图及例子。</p>
+
+<h6 id="toc_10">[第10集] 箱线图2</h6>
+
+<p>这一讲讲盒须图的另外一个例子，强化盒须图这一重要统计图表的概念。</p>
+
+<h6 id="toc_11">[第11集] 统计：集中趋势</h6>
+
+<p>集中趋势在统计学中是指一组数据向某一中心值靠拢的程度，它反映了一组数据中心点的位置所在。</p>
+
+<h6 id="toc_12">[第12集] 统计：样本和总体</h6>
+
+<p>研究中实际观测或调查的一部分个体称为样本，研究对象的全部称为总体。这一讲区分了这两个概念，并给出了样本均值和总体均值的求法。</p>
+
+<h6 id="toc_13">[第13集] 统计：总体方差</h6>
+
+<p>方差用来表述数据和均值之间的偏离程度，总体方差的计算公式是σ2=Σ&#040;Xi-μ&#041;2/N，其中求和的i从1到N。    </p>
+
+<h6 id="toc_14">[第14集] 统计：样本方差</h6>
+
+<p>方差用来表述数据和均值之间的偏离程度，样本方差不同于总体方差，计算公式为S2=Σ&#040;Xi-X&amp;#772;&#041;2/&#040;n-1&#041;，其中求和的i从1到n，这里方差用的是n-1而不是n。</p>
+
+<h6 id="toc_15">[第15集] 统计：标准差</h6>
+
+<p>标准差σ是表述数据和均值之间的偏离程度的另一个重要标志。它等于方差的平方根。</p>
+
+<h3 id="toc_16">2. 理解与python示例</h3>
+
+<h6 id="toc_17">概念</h6>
+
+<p>0，1，2，3，4，5，6<br/>
+mean：平均数<br/>
+median：中位数<br/>
+mode：众数<br/>
+range：极差<br/>
+midrange：中程数<br/>
+populiation：总体<br/>
+sample：样本</p>
+
+<h6 id="toc_18">示例</h6>
+
+<pre><code class="language-python">c = array([[[0,1,2],
+    [10, 12, 13]],
+    [[100,101,102],
+    [110,112,113]]])
+    
+print c[1,...]
+print c[1:3]
+print c[1]
+print c[1,:,:]
+    
+</code></pre>
+
+<p>\[f(x) = \sum_{i=0}^{N}\int_{a}^{b} g(t,i) \text{ d}t{6}\tag{1}\]</p>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="14905414099524.html" 
+          title="Previous Post: 基本LaTeX 公式命令">&laquo; 基本LaTeX 公式命令</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="14903623415602.html" 
+          title="Next Post: 欧几里得距离和余弦相似度">欧几里得距离和余弦相似度 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <div class="site-a-logo"><img src="asset/img/santo.jpg" /></div>
+            
+                <h1>迷雾</h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+<a target="_blank" class="github" target="_blank" href="https://github.com/expansion" title="GitHub">GitHub</a>
+<a target="_blank" class="email" href="mailto:zhongqijiang@gmail.com" title="Email">Email</a>
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="methodology.html"><strong>方法论</strong></a>
+        
+            <a href="bi.html"><strong>BI</strong></a>
+        
+            <a href="hadoop.html"><strong>Hadoop</strong></a>
+        
+            <a href="python.html"><strong>Python</strong></a>
+        
+            <a href="%E7%AE%97%E6%B3%95%E4%B8%8E%E6%A8%A1%E5%9E%8B.html"><strong>算法与模型</strong></a>
+        
+            <a href="reading-notes.html"><strong>读书笔记</strong></a>
+        
+            <a href="pm.html"><strong>项目管理</strong></a>
+        
+            <a href="tools.html"><strong>工具</strong></a>
+        
+            <a href="other.html"><strong>其他</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="14906932308872.html">【转载】Linux 系统实时监控的瑞士军刀 —— Glances</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="14906879678659.html">grafana简介</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="14906863997633.html">influxdb简介</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="14906690741306.html">linux开源监控influxdb+grafana+python</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="14905944917051.html">numpy系列（2）-解答方程</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+
+  </body>
+</html>

@@ -1,0 +1,434 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+  
+  echarts - 迷雾
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="迷雾" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site:expansion.github.io ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?62d755c6cb390866d7265db98f201165";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  </head>
+  <body class="antialiased hide-extras">
+
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; 迷雾</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+
+       <li><a href="index.html">HOME</a></li>
+    <li><a href="archives.html">Archives</a></li>
+    <li><a href="about.html">ABOUT</a></li>
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="methodology.html">方法论</a></li>
+        
+            <li><a href="bi.html">BI</a></li>
+        
+            <li><a href="hadoop.html">Hadoop</a></li>
+        
+            <li><a href="python.html">Python</a></li>
+        
+            <li><a href="%E7%AE%97%E6%B3%95%E4%B8%8E%E6%A8%A1%E5%9E%8B.html">算法与模型</a></li>
+        
+            <li><a href="reading-notes.html">读书笔记</a></li>
+        
+            <li><a href="pm.html">项目管理</a></li>
+        
+            <li><a href="tools.html">工具</a></li>
+        
+            <li><a href="other.html">其他</a></li>
+        
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>echarts</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2017/3/10</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='other.html'>其他</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <blockquote>
+<p>本文描述echart使用情况</p>
+</blockquote>
+
+<p><a href="echarts/echarts1.html">echart示例</a></p>
+
+<p><img src="images/echarts1.png" alt="图片示例"/></p>
+
+<p><a href="echarts/echarts2.html">echart示例2</a></p>
+
+<p><img src="images/echarts2.png" alt="图片示例"/>     </p>
+
+<p>注意：代码块的三个`是波浪线下面的符号，不是‘</p>
+
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;  
+    $(document).ready(function() {  
+        //为超链接加上target=&#39;_blank&#39;属性  
+        $(&#39;a[href^=&quot;http&quot;]&#39;).each(function() {  
+            $(this).attr(&#39;target&#39;, &#39;_blank&#39;);  
+        });  
+    });  
+&lt;/script&gt;  
+</code></pre>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+   &lt;head&gt;
+       &lt;script type=&quot;text/javascript&quot; src=&quot;http://echarts.baidu.com/gallery/vendors/echarts/echarts-all-3.js&quot;&gt;&lt;/script&gt;
+   &lt;/head&gt;
+   &lt;body&gt;
+       &lt;div id=&quot;container&quot; style=&quot;width: 600px; height: 250px;&quot;&gt;&lt;/div&gt;
+       &lt;script type=&quot;text/javascript&quot;&gt;
+          var chart = document.getElementById(&quot;container&quot;);
+          var myChart = echarts.init(chart);
+          var option = {
+              title: {
+                  text: &quot;Echarts Bar Chart&quot;
+              },
+              legend: [
+                  {
+                      data: [&quot;Hours Worked&quot;]
+                  }
+              ],
+              tooltip: {
+                  trigger: &#39;axis&#39;,
+                  axisPointer: {
+                      type: &#39;shadow&#39;
+                  }
+              },
+              xAxis: [
+                  {
+                      type: &#39;category&#39;,
+                      data: [&#39;Mon&#39;, &#39;Tue&#39;, &#39;Wed&#39;, &#39;Thu&#39;, &#39;Fri&#39;, &#39;Sat&#39;, &#39;Sun&#39;],
+                      axisTick: {
+                          alignWithLabel: true
+                      }
+                  }
+              ],
+              yAxis: [
+                  {
+                      type: &#39;value&#39;
+                  }
+              ],
+              series: [
+                  {
+                      name:&#39;Hours Worked&#39;,
+                      type:&#39;bar&#39;,
+                      barWidth: &#39;60%&#39;,
+                      data: [10, 52, 200, 334, 390, 330, 220]
+                  }
+              ]
+          };
+          myChart.setOption(option, true);
+       &lt;/script&gt;
+   &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="14893940156830.html" 
+          title="Previous Post: 数据库三范式">&laquo; 数据库三范式</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="14887705978634.html" 
+          title="Next Post: 康乃尔笔记法">康乃尔笔记法 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <div class="site-a-logo"><img src="asset/img/santo.jpg" /></div>
+            
+                <h1>迷雾</h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+<a target="_blank" class="github" target="_blank" href="https://github.com/expansion" title="GitHub">GitHub</a>
+<a target="_blank" class="email" href="mailto:zhongqijiang@gmail.com" title="Email">Email</a>
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="methodology.html"><strong>方法论</strong></a>
+        
+            <a href="bi.html"><strong>BI</strong></a>
+        
+            <a href="hadoop.html"><strong>Hadoop</strong></a>
+        
+            <a href="python.html"><strong>Python</strong></a>
+        
+            <a href="%E7%AE%97%E6%B3%95%E4%B8%8E%E6%A8%A1%E5%9E%8B.html"><strong>算法与模型</strong></a>
+        
+            <a href="reading-notes.html"><strong>读书笔记</strong></a>
+        
+            <a href="pm.html"><strong>项目管理</strong></a>
+        
+            <a href="tools.html"><strong>工具</strong></a>
+        
+            <a href="other.html"><strong>其他</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="14906932308872.html">【转载】Linux 系统实时监控的瑞士军刀 —— Glances</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="14906879678659.html">grafana简介</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="14906863997633.html">influxdb简介</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="14906690741306.html">linux开源监控influxdb+grafana+python</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="14905944917051.html">numpy系列（2）-解答方程</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+
+  </body>
+</html>

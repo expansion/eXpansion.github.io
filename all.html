@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-    
+  
   迷雾
   
   </title>
@@ -25,9 +25,19 @@
     return true;
   }
 </script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?62d755c6cb390866d7265db98f201165";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
   </head>
   <body class="antialiased hide-extras">
-    
+
     <div class="marketing off-canvas-wrap" data-offcanvas>
       <div class="inner-wrap">
 
@@ -68,7 +78,7 @@
 
 <aside class="left-off-canvas-menu">
       <ul class="off-canvas-list">
-       
+
        <li><a href="index.html">HOME</a></li>
     <li><a href="archives.html">Archives</a></li>
     <li><a href="about.html">ABOUT</a></li>
@@ -76,22 +86,24 @@
     <li><label>Categories</label></li>
 
         
-            <li><a href="Methodology.html">方法论</a></li>
+            <li><a href="methodology.html">方法论</a></li>
         
-            <li><a href="E-Commerce.html">电商行业</a></li>
+            <li><a href="bi.html">BI</a></li>
         
-            <li><a href="BusinessIntelligence.html">商业智能</a></li>
+            <li><a href="hadoop.html">Hadoop</a></li>
         
-            <li><a href="Hadoop.html">Hadoop</a></li>
+            <li><a href="python.html">Python</a></li>
         
-            <li><a href="Reading-Notes.html">读书笔记</a></li>
+            <li><a href="%E7%AE%97%E6%B3%95%E4%B8%8E%E6%A8%A1%E5%9E%8B.html">算法与模型</a></li>
         
-            <li><a href="PM.html">项目管理</a></li>
+            <li><a href="reading-notes.html">读书笔记</a></li>
+        
+            <li><a href="pm.html">项目管理</a></li>
         
             <li><a href="tools.html">工具</a></li>
         
             <li><a href="other.html">其他</a></li>
-         
+        
 
       </ul>
     </aside>
@@ -100,9 +112,6 @@
 
 
         <section id="main-content" role="main" class="scroll-container">
-        
-       
-
  <script type="text/javascript">
 	$(function(){
 		$('#menu_item_index').addClass('is_active');
@@ -113,14 +122,163 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="14869674421541.html">
+                <a class="clearlink" href="14906932308872.html">
                 
-                  <h1>关于面试与招聘</h1>
+                  <h1>【转载】Linux 系统实时监控的瑞士军刀 —— Glances</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	
+                        	<p>早些时候，我们提到过有很多可以用来监视系统性能的 Linux 系统监视工具。 但我们估计，或许更多的用户会倾向与绝大多数 Linux 发行版都带的工具 （top 命令）。</p>
+
+<p>top 命令是 Linux 下的一个实时任务管理器， 同时也是用于在 GNU/Linux 发行版中寻找系统性能方面的瓶颈，并帮助我们作出正确操作的常用系统监视工具。 她有着一个极为简洁的界面，并自带少量的可以帮助我们快速了解系统性能的实用选项。</p>
+
+<p>但是，有些时候想要通过她寻找一个占用系统资源比较大的应用或进程可能会比较困难。 因为 top 命令本身并不会帮助我们高亮那些吃太多 CPU，内存，或者其他资源的程序。</p>
+
+<p>为了达到这个目标，这里我们将介绍一款超牛逼的系统监视程序 —— Glances。 她可以自动高亮利用最高系统资源的程序，并为 Linux/Unix 服务器提供尽可能多的信息。</p>
+
+<h3 id="toc_0">什么是 Glances？</h3>
+
+<p>Glances 是一个由 Python 编写，使用 psutil 库来从系统抓取信息的基于 curses 开发的跨平台命令行系统监视工具。 通过 Glances，我们可以监视 CPU，平均负载，内存，网络流量，磁盘 I/O，其他处理器 和 文件系统 空间的利用情况。</p>
+
+<p>Glances 是一个用来监视 GNU/Linux 和 FreeBSD 操作系统的 GPL 授权的自由软件。</p>
+
+<p>Glances 同时也提供了很多实用的选项。 其中我们能够在配置文件见到的一项主要的功能就是设置关键值及相应的标签 （careful[小心], warning[警告] 和 critical[严重]）， 然后她会自动帮我们用不同颜色标出系统达到某个瓶颈的信息。</p>
+
+<h3 id="toc_1">Glances 主要功能</h3>
+
+<ul>
+<li>CPU 信息 （用户的相关应用, 系统核心程序和空闲程序）</li>
+<li>总内存信息，包括了物理内存，交换空间和空闲内存等等</li>
+<li>之前的 1 分钟、5 分钟和 15 分钟平均的 CPU 负载</li>
+<li>网络链接的下行和上行速度</li>
+<li>处理器总数，以及其活动状态</li>
+<li>硬盘 I/O 相关（读写）速度详情</li>
+<li>当前挂载设备的磁盘使用情况</li>
+<li>高 CPU 和内存使用的进程名，和相关应用的位置</li>
+<li>在底部显示当前日期和时间</li>
+<li>将消耗最高系统资源的进程用红色标出
+下面是一个 Glances 的使用截图：
+<img src="media/14906932308872/214404gen07qvynyj3vjzn.jpeg" alt="214404gen07qvynyj3vjzn"/></li>
+</ul>
+
+<h3 id="toc_2">在 Linux/Unix 系统中安装 Glances</h3>
+
+<p>虽然这个工具的发布比较晚，但你仍然可以在 Red Hat 系的系统中通过 EPEL 软件源安装。在终端用下面的命令安装：</p>
+
+<h4 id="toc_3">对于 RHEL/CentOS/Fedora 发行版</h4>
+
+<pre><code>yum install -y glances
+</code></pre>
+
+<h4 id="toc_4">对于 Debian/Ubuntu/Linux Mint 发行版</h4>
+
+<pre><code> sudo apt-add-repository ppa:arnaud-hartmann/glances-stable
+$ sudo apt-get update
+$ sudo apt-get install glances
+</code></pre>
+
+<h3 id="toc_5">如何使用 Glances</h3>
+
+<p>首先，你需要在终端中输入以下命令</p>
+
+<pre><code>glances
+</code></pre>
+
+<p><img src="media/14906932308872/214413hgrs2ozqwarrwypo.jpeg" alt="214413hgrs2ozqwarrwypo"/></p>
+
+<p>Glances Preview – Ubuntu 13.10<br/>
+Glances Preview – Ubuntu 13.10<br/>
+按下 ‘q‘ （‘ESC‘ 和 ‘Ctrl-C‘ 也可以） 退出 <br/>
+Glances 的默认刷新频率是 1 （秒），但是你可以通过在终端指定参数来手动定义其刷新频率</p>
+
+<pre><code>glances -t 2
+</code></pre>
+
+<p>Glances 中颜色的含义<br/>
+Glances 会用一下几种颜色来代表状态：</p>
+
+<ul>
+<li>绿色：OK（一切正常）</li>
+<li>蓝色：CAREFUL（需要注意）</li>
+<li>紫色：WARNING（警告）</li>
+<li>红色：CRITICAL（严重）</li>
+<li>
+阀值可以在配置文件中设置，一般阀值被默认设置为（careful=50、warning=70、critical=90）。</li>
+</ul>
+
+<p>我们可以按照自己的需求在配置文件（默认在 /etc/glances/glances.conf）中自定义。</p>
+
+<h3 id="toc_6">Glances 的选项</h3>
+
+<p>除了很多命令行选项之外，Glances 还提供了更多的可在其运行时开关输出信息选项的快捷键，下面是一些例子：</p>
+
+<p>a – 对进程自动排序<br/>
+c – 按 CPU 百分比对进程排序<br/>
+m – 按内存百分比对进程排序<br/>
+p – 按进程名字母顺序对进程排序<br/>
+i – 按读写频率（I/O）对进程排序<br/>
+d – 显示/隐藏磁盘 I/O 统计信息<br/>
+f – 显示/隐藏文件系统统计信息<br/>
+n – 显示/隐藏网络接口统计信息<br/>
+s – 显示/隐藏传感器统计信息<br/>
+y – 显示/隐藏硬盘温度统计信息<br/>
+l – 显示/隐藏日志（log）<br/>
+b – 切换网络 I/O 单位（Bytes/bits）<br/>
+w – 删除警告日志<br/>
+x – 删除警告和严重日志<br/>
+1 – 切换全局 CPU 使用情况和每个 CPU 的使用情况<br/>
+h – 显示/隐藏这个帮助画面<br/>
+t – 以组合形式浏览网络 I/O<br/>
+u – 以累计形式浏览网络 I/O<br/>
+q – 退出（‘ESC‘ 和 ‘Ctrl&amp;C‘ 也可以）<br/>
+远程使用 Glances<br/>
+你甚至也可以通过 Glances 来监视远程系统。 要在远程系统使用 ‘glances’，需要在服务器运行 ‘glances -s’（-s 启动服务器/客户端模式）命令。</p>
+
+<pre><code>glances -s
+
+
+Define the password for the Glances server
+Password: 
+Password (confirm): 
+Glances server is running on 0.0.0.0:61209
+</code></pre>
+
+<p>注意：当你执行了‘glances’命令后，她会让你为 Glances 服务器设置密码。</p>
+
+<p>当你设置完毕，你将看到 “Glances server is running on 0.0.0.0:61209” （Glances 服务器正在 0.0.0.0 的 61209 端口运行）的消息。</p>
+
+<p>当 Glances 服务器启动后，到本地执行下面的命令来指定服务器IP地址或主机名以链接。</p>
+
+<p>注：这里的 ‘172.16.27.56’ 是我 Glances 服务器的 IP 地址。</p>
+
+<pre><code># glances -c -P 172.16.27.56
+</code></pre>
+
+<p>下面是一些在使用服务器/客户端模式时必须知道的事情：</p>
+
+<ul>
+<li>在服务器模式，你可以通过 <code>-B 地址</code> 来设置绑定地址，也可以通过 <code>-p 端口</code> 来绑定监听的 TCP 端口</li>
+<li>在客户端模式，你可以通过同样的 <code>-p 端口</code> 来指定服务器端口</li>
+<li>默认的绑定地址是 0.0.0.0，但这么做会监听所有网络接口的指定端口</li>
+<li>在服务器/客户端模式下，限制的阀值将由服务器的设置决定</li>
+<li>你也可以在命令行下用过 <code>-P 密码</code> 的方式来为服务器端设置一个密码
+### 总结
+Glances 对于大多用户而言是个在系统资源上提供过多信息的工具。但是如果你是一个想要仅从命令行就能快速获取系统整体状况的系统管理员，那这个工具绝对是你的必备利器。</li>
+</ul>
+
+<h3 id="toc_7">译者注</h3>
+
+<p>请不要将 glances（本文中的工具）和 glance（一个 OpenStack 的工具）这两个包搞混了<br/>
+Ubuntu 官方 Extra 源中的 glances 因为 python 库移动的问题导致无法正常使用 但可以通过建立软链接的方式临时修复：</p>
+
+<pre><code>sudo ln -s /usr/lib/python2.7/dist-packages/glances /usr/share/pyshared/glances
+</code></pre>
+
+<p>外链：<a href="http://www.tecmint.com/glances-an-advanced-real-time-system-monitoring-tool-for-linux/">原文</a></p>
+
+<p>外链：<a href="https://linux.cn/article-2782-1.html">中文</a></p>
+
                         
                       </div>
                   </div>
@@ -128,7 +286,307 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2017/2/13</span>
+                    <span class="date">2017/3/28</span>
+                    
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="14906879678659.html">
+                
+                  <h1>grafana简介</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">安装 grafana</h3>
+
+<pre><code>wget https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana_4.2.0_amd64.deb 
+sudo dpkg -i grafana_4.2.0_amd64.deb
+sudo service grafana-server start
+</code></pre>
+
+<p>默认端口：3000<br/>
+默认用户：admin<br/>
+默认密码：admin</p>
+
+<h3 id="toc_1">基本概念</h3>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2017/3/28</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='python.html'>Python</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="14906863997633.html">
+                
+                  <h1>influxdb简介</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">安装</h3>
+
+<p>默认端口：8383<br/>
+默认用户：root<br/>
+默认密码：root<br/>
+外链：<a href="https://github.com/influxdata/influxdb">github</a></p>
+
+<pre><code>wget https://dl.influxdata.com/influxdb/releases/influxdb_1.0.0_amd64.deb
+sudo dpkg -i influxdb_1.0.0_amd64.deb
+sudo /etc/init.d/influxdb start
+</code></pre>
+
+<h3 id="toc_1">基本概念</h3>
+
+<ul>
+<li>influxdb的数据由时间序列(time series)组织，包含度量值(measurement)</li>
+<li>时间序列有0个或多个记录点(points)，每个指标一个离散样本</li>
+<li>measurement，就相当于关系数据库中的table，他就是tag，field，time的容器；从概念上讲，可以把measurement想象是一个sql表，row行是主索引，tags和fields是表中的列，tag是索引，fileds不是索引</li>
+<li>对于influxDb的measurement来说，field是必须的，并且不能根据field来排序；</li>
+<li>Tag是可选的，tag可以用来做索引，tag是以字符串的形式存放的；</li>
+<li>retention policy，保留策略，用于决定要保留多久的数据，保存几个备份，以及集群的策略等；</li>
+<li>series，a series is the collection of data that share a retention policy, measurement, and tag set，其实一个series就是一个测点，或者说一条曲线</li>
+<li>point，就是某个series的同一个时刻的多个field的value，就组成了一个point；其实就是一般曲线上的一个点。</li>
+<li>points包含timestamp和measurement，至少一个key-value域(fields)，例如 value=0.64 or 15min=0.78，0或多个key-value标签(tags)，包含元数据(metadata)，例如host=server01，region=EMEA，dc=Frankfurt。</li>
+<li>InfluxDb不需要做schema定义，这意味着你可以随意的添加measurements, tags, and fields at any time，</li>
+</ul>
+
+<pre><code class="language-数据示例">&lt;measurement&gt;[,&lt;tag-key&gt;=&lt;tag-value&gt;...] &lt;field-key&gt;=&lt;field-value&gt;[,&lt;field2-key&gt;=&lt;field2-value&gt;...] [unix-nano-timestamp]
+
+cpu,host=serverA,region=us_west value=0.64 payment,device=mobile,product=Notepad,method=credit billed=33,licenses=3 1434067467100293230 stock,symbol=AAPL bid=127.46,ask=127.48  temperature,machine=unit42,type=assembly external=25,internal=37 1434067467000000000
+
+</code></pre>
+
+<p>观察一下数据部分：</p>
+
+<p><strong>cpu_load_short,host=server01,region=us-west value=0.64,value2=0.86 1434055562000000000</strong></p>
+
+<p>这行数据含有两个空格，将之分为三个部分：<br/>
+第一部分：“cpu_load_short,host=server01,region=us-west”<br/>
+第一部分称为key，key中包含了measurement name和tags（tags又分为tag key和tag value，tags可以有多个），例子中的“cpu_load_short”就是measurement name，“host”和“reginon”是tag key，“server01”和“us-west”是对应的tag value。在我看来，measurement name和MySQL数据库的表名是等同的。<br/>
+另外，在tag value中的空格应以“\”加上空格表示，若有多个tag value，可以使用逗号隔开，但是应以“\”加逗号表示。</p>
+
+<p>第二部分：“value=0.64,value2=0.86”<br/>
+第二部分称为Field，同样和tags的形式相同，都是键值对的形式，但是tags中的值必须是string类型，而Field中的值可以为Integer、float、Boolean、string类型，若为Integer类型，则值后必须加“i”，否则该值为float类型，比如value=23意味着这个值23是float类型，而value=23i，意味着值23是Integer类型。Boolean类型的值的表示方式有很多，直接写成：t, T, true, TRUE, f, F, false或 FALSE都可以。</p>
+
+<p>第三部分（可选）：“1434055562000000000”<br/>
+第三部分称为Timestamp，是时间戳，如果该部分省略，则默认将当前时间的时间戳插入数据库，否则按照用户输入的时间戳插入。</p>
+
+<p>外链：<a href="http://www.tuicool.com/articles/vUja2yA">介绍数据格式以及timestamp</a></p>
+
+<p>如下图所示，返回204说明数据录入正常</p>
+
+<pre><code>parallels@ubuntu:~$ curl -i -XPOST &#39;http://localhost:8086/write?db=mydb&#39; --data-binary &#39;cpu_load_short,host=server01,region=us-west value=0.9&#39;
+HTTP/1.1 204 No Content
+Content-Type: application/json
+Request-Id: 32dd51e7-1380-11e7-84fc-000000000000
+X-Influxdb-Version: 1.0.0
+Date: Tue, 28 Mar 2017 06:31:38 GMT
+</code></pre>
+
+<p>外链：<a href="http://ju.outofmemory.cn/entry/291173">influxdb的简单使用</a></p>
+
+<pre><code class="language-python">#python代码
+from influxdb import InfluxDBClient
+json_body = [
+    {
+        &quot;measurement&quot;: &quot;cpu_load_short&quot;,
+        &quot;tags&quot;: {
+            &quot;host&quot;: &quot;server01&quot;,
+            &quot;region&quot;: &quot;us-west&quot;
+        },
+        &quot;time&quot;: &quot;2017-03-12T22:00:00Z&quot;,
+        &quot;fields&quot;: {
+            &quot;value&quot;: 0.7,
+            &quot;score&quot;: 0.4
+        }
+    }
+]
+client = InfluxDBClient(&#39;localhost&#39;, 8086, &#39;root&#39;, &#39;&#39;, &#39;mydb&#39;) # 初始化（指定要操作的数据库）
+client.write_points(json_body) # 写入数据，同时创建表
+
+</code></pre>
+
+<p><img src="media/14906863997633/Jietu20170328-163349@2x.jpg" alt="Jietu20170328-163349@2x"/></p>
+
+<p>外链：<a href="http://influxdb-python.readthedocs.io/en/latest/index.html">readthedocs</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2017/3/28</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='python.html'>Python</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="14906690741306.html">
+                
+                  <h1>linux开源监控influxdb+grafana+python</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<pre><code>采集数据（collectd）-&gt; 存储数据（InfluxDB) -&gt; 显示数据（Grafana）。
+</code></pre>
+
+<p>安装 grafana</p>
+
+<pre><code>wget https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana_4.2.0_amd64.deb 
+sudo dpkg -i grafana_4.2.0_amd64.deb
+sudo service grafana-server start
+</code></pre>
+
+<p>默认端口：3000<br/>
+默认用户：admin<br/>
+默认密码：admin</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2017/3/28</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='python.html'>Python</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="14905944917051.html">
+                
+                  <h1>numpy系列（2）-解答方程</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>3 * x0 + x1 = 9 <br/>
+x0 + 2 * x1 = 8</p>
+
+<pre><code>a = np.array([[3,1], [1,2]])
+b = np.array([9,8])
+x = np.linalg.solve(a, b)
+
+</code></pre>
+
+<p>x=[ 2.  3.]</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2017/3/27</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='python.html'>Python</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="14905414099524.html">
+                
+                  <h1>基本LaTeX 公式命令</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>希腊字母</p>
+
+<p>LaTeX 公式有两种，一种是用在正文中的，一种是单独显示的。正文中的公式用 <code>$...$</code>来定义，单独显示的用 <code>$$...$$</code>来定义，其中<code>...</code> 表示的是 LaTeX 的公式命令。</p>
+
+<p><img src="media/14905414099524/Jietu20170326-235216@2x.jpg" alt="Jietu20170326-235216@2x"/></p>
+
+<p>如果使用大写的希腊字母，把命令的首字母变成大写即可，例如 <code>\Gamma</code> 输出的是 Γ。</p>
+
+<p>如果使用斜体大写希腊字母，再在大写希腊字母的<code>LaTeX</code>命令前加上<code>var</code>，例如<code>\varGamma</code> 生成 Γ。</p>
+
+<p>和号和积分号比较常用，这里也列出来：<br/>
+<img src="media/14905414099524/Jietu20170326-235233@2x.jpg" alt="Jietu20170326-235233@2x"/></p>
+
+<p>其它常用命令<br/>
+<img src="media/14905414099524/Jietu20170326-235254@2x.jpg" alt="Jietu20170326-235254@2x"/></p>
+
+<p>注意：上标和下标在只有一个字符时，可以不用中括号: x<sup>2</sup> 和x<sup>{2}</sup> 的结果都是 x2</p>
+
+<hr/>
+
+<p>外链：<a href="http://blog.csdn.net/bendanban/article/details/44196101">使用LaTeX基本数学公式</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2017/3/26</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='other.html'>其他</a></span>
@@ -145,14 +603,120 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="14869673799379.html">
+                <a class="clearlink" href="14905140321658.html">
                 
-                  <h1>如何在需求未定的情况下做项目时间计划</h1>
+                  <h1>《可汗学院公开课：统计学》系列（1）</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	
+                        	<blockquote>
+<p>课程简介：<br/>
+这门课是统计学入门课程，将涵盖统计学所有的主要知识，包括：随机变量、均值方差标准差、统计图表、概率密度、二项分布、泊松分布、正态分布、大数定律、中心极限定理、样本和抽样分布、参数估计、置信区间、伯努利分布、假设检验和p值、方差分析、回归分析等内容。</p>
+
+<p>课程地址：<br/>
+外链：<a href="http://open.163.com/special/Khan/khstatistics.html">网易公开课</a></p>
+</blockquote>
+
+<hr/>
+
+<h3 id="toc_0">1. 课程内容</h3>
+
+<h6 id="toc_1">[第1集] 均值 中位数 众数</h6>
+
+<p>均值也就是算术平均值，即数据集中所有数据之和除以数据个数。<br/>
+中位数是数据集排序后，处在中间的数。<br/>
+众数是数据集中出现次数最多的数。<br/>
+补充：加权平均数<br/>
+<img src="media/14905140321658/Jietu20170327-112422@2x.jpg" alt="Jietu20170327-112422@2x"/></p>
+
+<h6 id="toc_2">[第2集] 极差 中程数</h6>
+
+<p>极差是数据集中最大数减去最小数的统计量。<br/>
+中程数是最大数和最小数的均值。</p>
+
+<h6 id="toc_3">[第3集] 象形统计图</h6>
+
+<p>象形统计图是用象形图像表示统计数据的图像，这一节讲象形统计图及例子。      </p>
+
+<h6 id="toc_4">[第4集] 条形图</h6>
+
+<p>条形图又称柱形图，是一种重要的分类汇总工具，这一节讲条形图及例子。   </p>
+
+<h6 id="toc_5">[第5集] 线形图</h6>
+
+<p>线形图，是将数据点描出来，然后连线形成的图像。用来表示趋势，这一节讲线形图及例子。 </p>
+
+<h6 id="toc_6">[第6集] 饼图</h6>
+
+<p>饼图，看起来像一块切开的饼，用于表示占比。这一节讲饼图及例子。</p>
+
+<h6 id="toc_7">[第7集] 误导人的线形图</h6>
+
+<p>当线形图画成什么样子时会产生误导了，这一讲将讲到这一问题。   </p>
+
+<h6 id="toc_8">[第8集] 茎叶图</h6>
+
+<p>茎叶图是将数组中的数按位数进行比较，分别做出茎和叶，以此统计数据。这一讲讲茎叶图及例子。<br/>
+<img src="media/14905140321658/Jietu20170327-112147@2x.jpg" alt="Jietu20170327-112147@2x"/></p>
+
+<h6 id="toc_9">[第9集] 箱线图</h6>
+
+<p>盒须图是用四个四分位点分开数据集的图，能有效给出数据散布状况。这一讲讲盒须图及例子。</p>
+
+<h6 id="toc_10">[第10集] 箱线图2</h6>
+
+<p>这一讲讲盒须图的另外一个例子，强化盒须图这一重要统计图表的概念。</p>
+
+<h6 id="toc_11">[第11集] 统计：集中趋势</h6>
+
+<p>集中趋势在统计学中是指一组数据向某一中心值靠拢的程度，它反映了一组数据中心点的位置所在。</p>
+
+<h6 id="toc_12">[第12集] 统计：样本和总体</h6>
+
+<p>研究中实际观测或调查的一部分个体称为样本，研究对象的全部称为总体。这一讲区分了这两个概念，并给出了样本均值和总体均值的求法。</p>
+
+<h6 id="toc_13">[第13集] 统计：总体方差</h6>
+
+<p>方差用来表述数据和均值之间的偏离程度，总体方差的计算公式是σ2=Σ&#040;Xi-μ&#041;2/N，其中求和的i从1到N。    </p>
+
+<h6 id="toc_14">[第14集] 统计：样本方差</h6>
+
+<p>方差用来表述数据和均值之间的偏离程度，样本方差不同于总体方差，计算公式为S2=Σ&#040;Xi-X&amp;#772;&#041;2/&#040;n-1&#041;，其中求和的i从1到n，这里方差用的是n-1而不是n。</p>
+
+<h6 id="toc_15">[第15集] 统计：标准差</h6>
+
+<p>标准差σ是表述数据和均值之间的偏离程度的另一个重要标志。它等于方差的平方根。</p>
+
+<h3 id="toc_16">2. 理解与python示例</h3>
+
+<h6 id="toc_17">概念</h6>
+
+<p>0，1，2，3，4，5，6<br/>
+mean：平均数<br/>
+median：中位数<br/>
+mode：众数<br/>
+range：极差<br/>
+midrange：中程数<br/>
+populiation：总体<br/>
+sample：样本</p>
+
+<h6 id="toc_18">示例</h6>
+
+<pre><code class="language-python">c = array([[[0,1,2],
+    [10, 12, 13]],
+    [[100,101,102],
+    [110,112,113]]])
+    
+print c[1,...]
+print c[1:3]
+print c[1]
+print c[1,:,:]
+    
+</code></pre>
+
+<p>\[f(x) = \sum_{i=0}^{N}\int_{a}^{b} g(t,i) \text{ d}t{6}\tag{1}\]</p>
+
                         
                       </div>
                   </div>
@@ -160,10 +724,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2017/2/13</span>
+                    <span class="date">2017/3/26</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='PM.html'>项目管理</a></span>
+          					    <span class="posted-in"><a href='reading-notes.html'>读书笔记</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -177,14 +741,41 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="14869673406288.html">
+                <a class="clearlink" href="14903623415602.html">
                 
-                  <h1>OmniPaln</h1>
+                  <h1>欧几里得距离和余弦相似度</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	
+                        	<p>都是做相关性分析</p>
+
+<h2 id="toc_0">欧几里得距离</h2>
+
+<p>距离越短，dist=0，最接近<br/>
+二维：（X1，Y1），和（X2，Y2），那这俩点距离是多少初中生都会，就是√( (x1-x2)<sup>2</sup> +(y1-y2)<sup>2</sup> ）<br/>
+三维：√( (x1-x2)<sup>2</sup> +(y1-y2)<sup>2</sup> +(z1-z2)<sup>2</sup></p>
+
+<h2 id="toc_1">余弦相似度</h2>
+
+<p>角度越接近，余弦相似度=1，最接近<br/>
+<img src="media/14903623415602/68DEFF47-1808-4BA8-851D-3881410DFC1E.png" alt="68DEFF47-1808-4BA8-851D-3881410DFC1E"/></p>
+
+<h2 id="toc_2">标准化</h2>
+
+<h3 id="toc_3">离差标准化</h3>
+
+<p>又叫0-1标准化，min-max标准化<br/>
+是对原始数据的线性变换，使结果落到[0,1]区间</p>
+
+<h3 id="toc_4">标准差标准化</h3>
+
+<p>经过处理的数据符合标准正态分布，即均值为0，标准差为1</p>
+
+<hr/>
+
+<p>外链：<a href="http://blog.csdn.net/mrwu9902/article/details/53672514">聚类、K-Means、例子、细节</a></p>
+
                         
                       </div>
                   </div>
@@ -192,10 +783,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2017/2/13</span>
+                    <span class="date">2017/3/24</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='tools.html'>工具</a></span>
+          					    <span class="posted-in"><a href='%E7%AE%97%E6%B3%95%E4%B8%8E%E6%A8%A1%E5%9E%8B.html'>算法与模型</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -209,14 +800,26 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="14869671406268.html">
+                <a class="clearlink" href="14903437132975.html">
                 
-                  <h1>电商社区的思考</h1>
+                  <h1>numpy系列（1）-基础知识</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	
+                        	<p>import numpy as np<br/>
+<img src="media/14903437132975/242038359213175.png" alt="242038359213175"/><br/>
+<a href="images/242038359213175.png">数组</a></p>
+
+<p><img src="media/14903437132975/Jietu20170324-221210@2x.jpg" alt="Jietu20170324-221210@2x"/></p>
+
+<hr/>
+
+<p>外链0：<a href="http://www.numpy.org">官网</a><br/>
+外链1：<a href="http://blog.csdn.net/nkwangjie/article/details/17298851">numpy使用手册</a><br/>
+外链2：<a href="http://www.cnblogs.com/jasonfreak/p/5441512.html">使用Python进行描述性统计</a><br/>
+外链3：<a href="https://my.oschina.net/babeler/blog/352125">使用 NumPy 进行科学计算</a></p>
+
                         
                       </div>
                   </div>
@@ -224,8 +827,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2017/2/13</span>
-                    
+                    <span class="date">2017/3/24</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='python.html'>Python</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -239,148 +844,63 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="14869670339385.html">
+                <a class="clearlink" href="14902606438001.html">
                 
-                  <h1>区块链</h1>
+                  <h1>K-Means算法</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2017/2/13</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='E-Commerce.html'>电商行业</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+                        	<p>K-Means算法思想简单，效果却很好，是最有名的聚类算法。聚类算法的步骤如下：</p>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="14869670256806.html">
-                
-                  <h1>微服务</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2017/2/13</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='E-Commerce.html'>电商行业</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<p>1：初始化K个样本作为初始聚类中心；</p>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="14869669378585.html">
-                
-                  <h1>高效程序员的43个习惯</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2017/2/13</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Reading-Notes.html'>读书笔记</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<p>2：计算每个样本点到K个中心的距离，选择最近的中心作为其分类，直到所有样本点分类完毕；</p>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="14869665961560.html">
-                
-                  <h1>微软AdvantureWorks示例</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2017/2/13</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='BusinessIntelligence.html'>商业智能</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<p>3：分别计算K个类中所有样本的质心，作为新的中心点，完成一轮迭代。</p>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="14869660347760.html">
-                
-                  <h1>Hadoop生态环境</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">Common</h2>
+<p>通常的迭代结束条件为新的质心与之前的质心偏移值小于一个给定阈值。</p>
 
-<h2 id="toc_1">HDFS</h2>
+<p>下面给一个简单的例子来加深理解。如下图有4个样本点，坐标分别为A(-1,-1),B(1,-1),C(-1,1),D(1,1)。现在要将他们聚成2类，指定A、B作为初始聚类中心（聚类中心A0, B0），指定阈值0.1。K-Means迭代过程如下：</p>
 
-<h2 id="toc_2">MAPReduce</h2>
+<p>step 1.1：计算各样本距离聚类中心的距离：</p>
 
-<h2 id="toc_3">YARN</h2>
+<p>样本A：d(A,A0) = 0; d(A,B0) = 2;因此样本A属于A0所在类；</p>
+
+<p>样本B：d(B,A0) = 2; d(B,B0) = 0;因此样本B属于B0所在类；<br/>
+样本C：d(C,A0) = 2; d(C,B0) = 2.8;;因此样本C属于A0所在类；</p>
+
+<p>样本C：d(D,A0) = 2.8; d(D,B0) = 2;;因此样本C属于B0所在类；</p>
+
+<p>step 1.2：全部样本分类完毕，现在计算A0类（包含样本AC）和B0类（包含样本BD）的新的聚类中心：</p>
+
+<p>A1 = (-1, 0); B1 = (1,0);</p>
+
+<p>step 1.3：计算聚类中心的偏移值是否满足终止条件：</p>
+
+<p>|A1-A0| = |(-1,0)-(-1,-1) | = |(0,1)| = 1 &gt;0.1，因此继续迭代。</p>
+
+<p>此时的状态如下图所示：</p>
+
+<p>step 2.1：计算各样本距离聚类中心的距离：</p>
+
+<p>样本A：d(A,A1) = 1; d(A,B1) = 2.2;因此样本A属于A1所在类；</p>
+
+<p>样本B：d(B,A1) = 2.2; d(B,B1) = 1;因此样本B属于B1所在类；<br/>
+样本C：d(C,A1) = 1; d(C,B1) = 2.2;;因此样本C属于A1所在类；</p>
+
+<p>样本D：d(D,A1) = 2.2; d(D,B1) = 1;;因此样本C属于B1所在类；<br/>
+step 2.2：全部样本分类完毕，现在计算A1类（包含样本AC）和B1类（包含样本BD）的新的聚类中心：</p>
+
+<p>A2 = (-1, 0); B2 = (1,0);</p>
+
+<p>step 2.3：计算聚类中心的偏移值是否满足终止条件：</p>
+
+<p>|A2-A1| = |B2-B1| = 0 &lt;0.1，因此迭代终止。</p>
+
+<hr/>
+
+<p>外链：<a href="http://blog.csdn.net/lsldd/article/details/41624305">用Python开始机器学习（10：聚类算法之K均值）</a></p>
 
                         
                       </div>
@@ -389,53 +909,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2017/2/13</span>
+                    <span class="date">2017/3/23</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='Hadoop.html'>Hadoop</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="14869640366068.html">
-                
-                  <h1>电商设计活动倒计时以及抢购数量方案</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">活动倒计时</h2>
-
-<p>时间标准<br/>
-redis存储<br/>
-前台展示</p>
-
-<h2 id="toc_1">抢购数量</h2>
-
-<p>预设数量<br/>
-抢到减一<br/>
-为零结束</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2017/2/13</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='E-Commerce.html'>电商行业</a></span>
+          					    <span class="posted-in"><a href='%E7%AE%97%E6%B3%95%E4%B8%8E%E6%A8%A1%E5%9E%8B.html'>算法与模型</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -502,17 +979,19 @@ redis存储<br/>
 
       	<p class="cat-list">
         
-            <a href="Methodology.html"><strong>方法论</strong></a>
+            <a href="methodology.html"><strong>方法论</strong></a>
         
-            <a href="E-Commerce.html"><strong>电商行业</strong></a>
+            <a href="bi.html"><strong>BI</strong></a>
         
-            <a href="BusinessIntelligence.html"><strong>商业智能</strong></a>
+            <a href="hadoop.html"><strong>Hadoop</strong></a>
         
-            <a href="Hadoop.html"><strong>Hadoop</strong></a>
+            <a href="python.html"><strong>Python</strong></a>
         
-            <a href="Reading-Notes.html"><strong>读书笔记</strong></a>
+            <a href="%E7%AE%97%E6%B3%95%E4%B8%8E%E6%A8%A1%E5%9E%8B.html"><strong>算法与模型</strong></a>
         
-            <a href="PM.html"><strong>项目管理</strong></a>
+            <a href="reading-notes.html"><strong>读书笔记</strong></a>
+        
+            <a href="pm.html"><strong>项目管理</strong></a>
         
             <a href="tools.html"><strong>工具</strong></a>
         
@@ -533,33 +1012,35 @@ redis存储<br/>
 	      
 		      
 			      <li class="post">
-			        <a href="14869674421541.html">关于面试与招聘</a>
+			        <a href="14906932308872.html">【转载】Linux 系统实时监控的瑞士军刀 —— Glances</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="14869673799379.html">如何在需求未定的情况下做项目时间计划</a>
+			        <a href="14906879678659.html">grafana简介</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="14869673406288.html">OmniPaln</a>
+			        <a href="14906863997633.html">influxdb简介</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="14869671406268.html">电商社区的思考</a>
+			        <a href="14906690741306.html">linux开源监控influxdb+grafana+python</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="14869670339385.html">区块链</a>
+			        <a href="14905944917051.html">numpy系列（2）-解答方程</a>
 			      </li>
 		     
+		  
+		      
 		  
 		      
 		  
@@ -631,7 +1112,7 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
     </script>
 
     
-
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
 
 
   </body>
